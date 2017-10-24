@@ -56,14 +56,40 @@ class ContainerViewController: UIViewController, ContainerViewControllerDelegate
   }
 
 
-  func didTransitionToSummary() {
-    remove(childViewController: mapViewController)
-    add(childViewController: summaryViewController)
+  func didTransitionToMap() {
+    summaryViewController.willMove(toParentViewController: nil)
+    add(childViewController: mapViewController)
+
+    mapViewController.view.alpha = 0
+
+    transition(from: summaryViewController, to: mapViewController, duration: 0.3, options: .curveEaseInOut, animations: {
+      self.mapViewController.view.alpha = 1
+      self.summaryViewController.view.alpha = 0
+    }) { finished in
+      self.summaryViewController.removeFromParentViewController()
+      self.mapViewController.didMove(toParentViewController: self)
+    }
+
+    // make sure our cards view is always on top
+    self.view.bringSubview(toFront: self.cardView)
   }
 
-  func didTransitionToMap() {
-    remove(childViewController: summaryViewController)
-    add(childViewController: mapViewController)
+  func didTransitionToSummary() {
+    mapViewController.willMove(toParentViewController: nil)
+    add(childViewController: summaryViewController)
+
+    summaryViewController.view.alpha = 0
+
+    transition(from: mapViewController, to: summaryViewController, duration: 0.3, options: .curveEaseInOut, animations: {
+      self.summaryViewController.view.alpha = 1
+      self.mapViewController.view.alpha = 0
+    }) { finished in
+      self.mapViewController.removeFromParentViewController()
+      self.summaryViewController.didMove(toParentViewController: self)
+    }
+
+    // make sure our cards view is always on top
+    self.view.bringSubview(toFront: self.cardView)
   }
 
 
@@ -83,12 +109,7 @@ class ContainerViewController: UIViewController, ContainerViewControllerDelegate
     child.didMove(toParentViewController: self)
 
     // make sure our cards view is always on top
-    view.bringSubview(toFront: cardView)
+    self.view.bringSubview(toFront: self.cardView)
   }
 
-  private func remove(childViewController child: UIViewController) {
-    child.willMove(toParentViewController: nil)
-    child.view.removeFromSuperview()
-    child.removeFromParentViewController()
-  }
 }

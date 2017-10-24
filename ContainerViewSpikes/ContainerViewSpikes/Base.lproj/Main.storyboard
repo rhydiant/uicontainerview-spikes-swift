@@ -11,6 +11,7 @@
     <customFonts key="customFonts">
         <array key="HelveticaNeueLights.ttc">
             <string>HelveticaNeue-Light</string>
+            <string>HelveticaNeue-Thin</string>
             <string>HelveticaNeue-UltraLight</string>
         </array>
     </customFonts>
@@ -25,9 +26,19 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wp8-Ym-bX1">
                                 <rect key="frame" x="0.0" y="519" width="375" height="148"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CardView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WuY-Qa-2iu">
+                                        <rect key="frame" x="154" y="64.5" width="67.5" height="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="1" green="0.57999999999999996" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="WuY-Qa-2iu" firstAttribute="centerY" secondItem="wp8-Ym-bX1" secondAttribute="centerY" id="HHC-fB-TFW"/>
+                                    <constraint firstItem="WuY-Qa-2iu" firstAttribute="centerX" secondItem="wp8-Ym-bX1" secondAttribute="centerX" id="S4v-q9-dM8"/>
                                     <constraint firstAttribute="height" constant="148" id="hxj-zH-gfA"/>
                                 </constraints>
                             </view>
